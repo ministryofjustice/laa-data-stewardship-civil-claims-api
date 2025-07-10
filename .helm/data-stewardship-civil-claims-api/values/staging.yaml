@@ -23,10 +23,10 @@ ingress:
     external-dns.alpha.kubernetes.io/set-identifier: "laa-data-stewardship-civil-claims-api-dsp-chart-laa-data-stewardship-civil-claims-api-staging-green"
     external-dns.alpha.kubernetes.io/aws-weight: "100"
   hosts:
-    - laa-data-stewardship-civil-claims-api-staging.apps.live.cloud-platform.service.justice.gov.uk
+    - laa-data-stewardship-civil-claims-api-staging.cloud-platform.service.justice.gov.uk
   tls:
     - hosts:
-      - domain: laa-data-stewardship-civil-claims-api-staging.apps.live.cloud-platform.service.justice.gov.uk
+      - domain: laa-data-stewardship-civil-claims-api-staging.cloud-platform.service.justice.gov.uk
 
 resources:
   limits:
