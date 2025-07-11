@@ -1,0 +1,27 @@
+name: Preview OpenAPI Spec
+
+on:
+  push:
+    branches:
+      - 'chore/DSTEW-147**'
+
+jobs:
+  preview-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate Swagger HTML
+        run: |
+          mkdir -p swagger-ui
+          docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+            -i /local/claims-data/api/open-api-specification.yml \
+            -g html2 \
+            -o /local/swagger-ui
+
+      - name: Upload Swagger UI as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-preview
+          path: swagger-ui/
