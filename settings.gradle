@@ -13,11 +13,11 @@ pluginManagement {
     }
 
     plugins {
-        id 'uk.gov.laa.ccms.springboot.laa-ccms-spring-boot-gradle-plugin' version '0.0.36'
+        id 'uk.gov.laa.ccms.springboot.laa-ccms-spring-boot-gradle-plugin' version '0.0.38'
     }
 }
 
-rootProject.name = 'laa-data-stewardship-payments'
+rootProject.name = 'laa-data-stewardship-civil-claims-api'
 
 include 'claims-data'
 include 'claims-data:api'

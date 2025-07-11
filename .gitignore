@@ -6,7 +6,8 @@ build/
 !**/src/test/**/build/
 .DS_Store
 
-claims_data/api/generated
+claims-data/api/generated
+claims-data/api/bin
 
 ### IntelliJ IDEA ###
 .idea

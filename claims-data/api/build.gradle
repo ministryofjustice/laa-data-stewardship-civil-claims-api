@@ -7,10 +7,10 @@ repositories {
     mavenCentral()
 }
 
-//Overriding tomcat version coming from laa-ccms-spring-boot-gradle-plugin -> spring boot 3.5.0
+//Overriding tomcat version coming from laa-ccms-spring-boot-gradle-plugin -> spring boot 3.5.3
 // to avoid snyk warning that stops the build
 //Remove the line below when the laa-ccms-spring-boot-gradle-plugin is upgraded
-ext['tomcat.version'] = '10.1.42'
+ext['tomcat.version'] = '10.1.43'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -43,7 +43,7 @@ openApiGenerate {
 compileJava.dependsOn 'openApiGenerate'
 
 clean {
-    delete "$rootDir/laa-data-stewardship-payments-api/generated"
+    delete "$rootDir/laa-data-stewardship-civil-claims-api/generated"
 }
 
 // disable for overall project when running a build
