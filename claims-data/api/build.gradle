@@ -41,6 +41,13 @@ openApiGenerate {
     ]
 }
 
+openApiGenerateSwaggerOnly {
+    generatorName = "html2"
+    inputSpec = "$rootDir/claims-data/api/open-api-specification.yaml"
+    outputDir = "$rootDir/laa-data-stewardship-civil-claims-api/generated"
+    skipValidateSpec = false
+}
+
 compileJava.dependsOn 'openApiGenerate'
 
 clean {
