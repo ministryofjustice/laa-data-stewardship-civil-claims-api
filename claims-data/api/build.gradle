@@ -41,11 +41,17 @@ openApiGenerate {
     ]
 }
 
-openApiGenerateSwaggerOnly {
+import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+
+tasks.register('openApiGenerateSwaggerOnly', GenerateTask) {
     generatorName = "html2"
-    inputSpec = "$rootDir/claims-data/api/open-api-specification.yaml"
-    outputDir = "$rootDir/laa-data-stewardship-civil-claims-api/generated"
+    inputSpec = "$rootDir/claims-data/api/open-api-specification.yml"
+    outputDir = "$rootDir/claims-data/api/generated".toString()
     skipValidateSpec = false
+    configOptions = [
+            "hideDownloadButton": "true",
+            "theme": "flattop"  // or another Swagger UI theme if you prefer
+    ]
 }
 
 compileJava.dependsOn 'openApiGenerate'
