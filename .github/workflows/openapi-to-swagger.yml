@@ -28,7 +28,7 @@ jobs:
       - name: Copy Swagger UI to static folder
         run: |
           mkdir -p swagger-ui-app/src/main/resources/static
-          cp -r api/build/generated/swagger-ui/* swagger-ui-app/src/main/resources/static/
+          cp -r claims-data/api/build/generated/swagger-ui/* swagger-ui-app/src/main/resources/static/
 
       - name: Build Swagger UI JAR
         run: ./gradlew :swagger-ui-app:bootJar
