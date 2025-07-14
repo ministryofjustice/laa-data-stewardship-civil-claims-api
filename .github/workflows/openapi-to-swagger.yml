@@ -22,14 +22,22 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Generate Swagger-only app and build its jar
-        run: ./gradlew openApiGenerateSwaggerOnly bootJar
+      - name: Generate Swagger UI
+        run: ./gradlew openApiGenerateSwaggerOnly
+
+      - name: Copy Swagger UI to static folder
+        run: |
+          mkdir -p swagger-ui-app/src/main/resources/static
+          cp -r api/build/generated/swagger-ui/* swagger-ui-app/src/main/resources/static/
+
+      - name: Build Swagger UI JAR
+        run: ./gradlew :swagger-ui-app:bootJar
 
       - name: Upload Swagger UI JAR
         uses: actions/upload-artifact@v4
         with:
-          name: service-jar
-          path: claims-data/service/build/libs/*.jar
+          name: swagger-ui-jar
+          path: swagger-ui-jar/build/libs/*.jar
           retention-days: 1
 
   build-push-docker:
