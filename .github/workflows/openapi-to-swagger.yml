@@ -70,6 +70,7 @@ jobs:
         id: login-ecr
       - name: Build and push a Docker image for claims-data
         run: |
+          ls -lR claims-api
           docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./claims-data/swagger-ui-app
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         env:
