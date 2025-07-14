@@ -46,7 +46,7 @@ import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 tasks.register('openApiGenerateSwaggerOnly', GenerateTask) {
     generatorName = "html2"
     inputSpec = "$rootDir/claims-data/api/open-api-specification.yml"
-    outputDir = "$rootDir/claims-data/api/generated".toString()
+    outputDir = layout.buildDirectory.dir("generated/swagger-ui").get().asFile.toString()
     skipValidateSpec = false
     configOptions = [
             "hideDownloadButton": "true",
