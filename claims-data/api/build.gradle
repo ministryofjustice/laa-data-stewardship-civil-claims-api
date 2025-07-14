@@ -36,6 +36,7 @@ openApiGenerate {
             skipDefaultInterface: "true",
             useJakartaEe        : "true",
             useSpringBoot3      : "true",
+            useSwaggerUI        : "true",
             useTags             : "true",
     ]
 }

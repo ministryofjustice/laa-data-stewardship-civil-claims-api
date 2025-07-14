@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
   pull_request:
     types: [closed]
-
+  delete:
+    branches:
+      - 'openapi/**'
 jobs:
 
   cleanup-uat:
