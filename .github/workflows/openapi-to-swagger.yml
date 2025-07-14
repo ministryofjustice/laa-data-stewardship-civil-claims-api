@@ -71,7 +71,7 @@ jobs:
       - name: Build and push a Docker image for claims-data
         run: |
           pwd
-          ls -lR ./claims-api
+          ls -lR
           docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./claims-data/swagger-ui-app
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         env:
