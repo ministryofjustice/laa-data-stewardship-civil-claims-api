@@ -72,7 +72,7 @@ jobs:
         run: |
           pwd
           ls -lR
-          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./claims-data/swagger-ui-app
+          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./claims-data
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
