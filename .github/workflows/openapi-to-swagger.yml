@@ -55,8 +55,8 @@ jobs:
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
-          name: service-jar
-          path: claims-data/service/build/libs/
+          name: swagger-ui-jar
+          path: claims-data/swagger-ui-app/build/libs/
 
         # ---------- AWS auth (OIDC) ----------
       - name: Configure AWS creds
