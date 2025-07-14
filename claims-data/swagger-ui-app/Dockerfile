@@ -6,7 +6,7 @@ RUN mkdir -p /opt/laa-data-stewardship-civil-claims-api/claims-data/
 WORKDIR /opt/laa-data-stewardship-civil-claims-api/claims-data/
 
 # Copy the JAR file into the container
-COPY swagger-ui-app/build/libs/service-1.0.0.jar app.jar
+COPY swagger-ui-app/build/libs/swagger-ui-jar-1.0.0.jar app.jar
 
 # Create a group and non-root user
 RUN addgroup -S appgroup && adduser -u 1001 -S appuser -G appgroup
