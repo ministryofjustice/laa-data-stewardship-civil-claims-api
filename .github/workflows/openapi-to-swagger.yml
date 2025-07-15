@@ -30,12 +30,11 @@ jobs:
           pwd
           echo "running ls -l"
           ls -l
-          echo "running ls -R claims-data/api/build/generated/swagger-ui"
-          ls -R claims-data/api/build/generated/swagger-ui
-          echo "running ls -R swagger-ui-app"
-          ls -R swagger-ui-app
-          mkdir -p swagger-ui-app/src/main/resources/static
-          cp -r claims-data/api/build/generated/swagger-ui/* swagger-ui-app/src/main/resources/static/
+          echo "running ls -R claims-data"
+          ls -R claims-data
+          mkdir -p claims-data/swagger-ui-app/src/main/resources/static
+          claims-data/api/build/generated/swagger-ui
+          cp -r claims-data/api/build/generated/swagger-ui/* claims-data/swagger-ui-app/src/main/resources/static/
 
       - name: Build Swagger UI JAR
         run: ./gradlew :claims-data:swagger-ui-app:bootJar
