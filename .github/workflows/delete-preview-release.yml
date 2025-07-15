@@ -6,7 +6,7 @@ on:
     types: [closed]
   delete:
     branches:
-      - 'openapi/**'
+      - '**'
 jobs:
 
   cleanup-uat:

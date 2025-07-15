@@ -3,7 +3,7 @@ name: Preview OpenAPI Spec
 on:
   push:
     branches:
-      - 'chore/DSTEW-147**'
+      - 'openapi/**'
 
 jobs:
   generate-swagger-ui:
