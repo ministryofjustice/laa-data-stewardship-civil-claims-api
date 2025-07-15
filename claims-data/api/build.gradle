@@ -67,16 +67,6 @@ tasks.register('openApiGenerateSwaggerOnly', GenerateTask) {
     ]
 }
 
-tasks.register("prepareSwaggerUI") {
-    dependsOn "generateSwaggerUIOnly"
-    doLast {
-        copy {
-            from(layout.buildDirectory.dir("generated/swagger-ui").get().asFile.toString())
-            into("src/main/resources/static")
-        }
-    }
-}
-
 compileJava.dependsOn 'openApiGenerate'
 
 clean {
