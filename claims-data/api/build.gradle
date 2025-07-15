@@ -26,7 +26,6 @@ dependencies {
 }
 
 if (project.hasProperty("swaggerOnly") && project.property("swaggerOnly") == "true") {
-    compileJava.enabled = false
     tasks.named("openApiGenerate").configure {
         enabled = false
     }
