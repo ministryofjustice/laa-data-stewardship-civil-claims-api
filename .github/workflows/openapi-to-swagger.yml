@@ -27,22 +27,17 @@ jobs:
 
       - name: Copy Swagger UI to static folder
         run: |
-          pwd
-          echo "running ls -l"
-          ls -l
-          echo "running ls -R claims-data"
-          ls -R claims-data
-          mkdir -p claims-data/swagger-ui-app/src/main/resources/static
-          cp -r claims-data/api/build/generated/swagger-ui/* claims-data/swagger-ui-app/src/main/resources/static/
+          mkdir -p claims-data/api/src/main/resources/static
+          cp -r claims-data/api/build/generated/swagger-ui/* claims-data/api/src/main/resources/static/
 
       - name: Build Swagger UI JAR
-        run: ./gradlew :claims-data:swagger-ui-app:bootJar
+        run: ./gradlew :claims-data:api:bootJar
 
       - name: Upload Swagger UI JAR
         uses: actions/upload-artifact@v4
         with:
           name: swagger-ui-jar
-          path: claims-data/swagger-ui-app/build/libs/*.jar
+          path: claims-data/api/build/libs/*.jar
           retention-days: 1
 
   build-push-docker:
@@ -61,7 +56,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: swagger-ui-jar
-          path: claims-data/swagger-ui-app/build/libs/
+          path: claims-data/api/build/libs/
 
         # ---------- AWS auth (OIDC) ----------
       - name: Configure AWS creds
@@ -75,7 +70,7 @@ jobs:
         id: login-ecr
       - name: Build and push a Docker image for claims-data
         run: |
-          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./claims-data/swagger-ui-app
+          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./claims-data/api
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}

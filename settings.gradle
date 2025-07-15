@@ -22,5 +22,4 @@ rootProject.name = 'laa-data-stewardship-civil-claims-api'
 include 'claims-data'
 include 'claims-data:api'
 include 'claims-data:service'
-include 'claims-data:swagger-ui-app'
 
