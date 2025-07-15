@@ -27,6 +27,13 @@ jobs:
 
       - name: Copy Swagger UI to static folder
         run: |
+          pwd
+          echo "running ls -l"
+          ls -l
+          echo "running ls -R claims-data/api/build/generated/swagger-ui"
+          ls -R claims-data/api/build/generated/swagger-ui
+          echo "running ls -R swagger-ui-app"
+          ls -R swagger-ui-app
           mkdir -p swagger-ui-app/src/main/resources/static
           cp -r claims-data/api/build/generated/swagger-ui/* swagger-ui-app/src/main/resources/static/
 
