@@ -25,6 +25,13 @@ dependencies {
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
 }
 
+if (project.hasProperty("swaggerOnly") && project.property("swaggerOnly") == "true") {
+    compileJava.enabled = false
+    tasks.named("openApiGenerate").configure {
+        enabled = false
+    }
+}
+
 sourceSets.main.java.srcDirs += ['generated/src/main/java']
 
 checkstyleMain.exclude "*"
@@ -59,6 +66,16 @@ tasks.register('openApiGenerateSwaggerOnly', GenerateTask) {
             "hideDownloadButton": "true",
             "theme": "flattop"  // or another Swagger UI theme if you prefer
     ]
+}
+
+tasks.register("prepareSwaggerUI") {
+    dependsOn "generateSwaggerUIOnly"
+    doLast {
+        copy {
+            from(layout.buildDirectory.dir("generated/swagger-ui").get().asFile.toString())
+            into("src/main/resources/static")
+        }
+    }
 }
 
 compileJava.dependsOn 'openApiGenerate'

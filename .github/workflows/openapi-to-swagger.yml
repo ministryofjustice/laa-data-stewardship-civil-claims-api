@@ -23,7 +23,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Generate Swagger UI
-        run: ./gradlew openApiGenerateSwaggerOnly
+        run: ./gradlew -PswaggerOnly=true openApiGenerateSwaggerOnly
 
       - name: Copy Swagger UI to static folder
         run: |
@@ -31,7 +31,7 @@ jobs:
           cp -r claims-data/api/build/generated/swagger-ui/* claims-data/api/src/main/resources/static/
 
       - name: Build Swagger UI JAR
-        run: ./gradlew :claims-data:api:bootJar
+        run: ./gradlew  -PswaggerOnly=true :claims-data:api:bootJar
 
       - name: Upload Swagger UI JAR
         uses: actions/upload-artifact@v4
