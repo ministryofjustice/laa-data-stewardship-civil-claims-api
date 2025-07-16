@@ -119,17 +119,18 @@ jobs:
           echo "Working directory: $PWD"
           ls -l ./claims-data
 
-      - name: Build a Docker image for claims-data
-        run: docker build -t claims-data-scan ./claims-data
+      - name: Build local Docker image
+        run: |
+          docker build -t claims-data-scan ./claims-data
+          docker save claims-data-scan -o image.tar
 
-      - name: Debug Docker images
-        run: docker images
-
-      - name: Run Snyk to check claims-data Docker image for vulnerabilities
+      - name: Run Snyk to scan Docker image from tarball
         uses: snyk/actions/docker@master
         with:
-          image: claims-data-scan
-          args: --docker -d --log-level=trace --severity-threshold=high
+          image: image.tar
+          args: --docker --severity-threshold=high
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   build-push-docker:
     name: build and push docker image
