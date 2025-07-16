@@ -5,7 +5,7 @@ outputs:
   merged-branch-name:
     description: "Extracted merged branch name"
     value: ${{ steps.extract_branch.outputs.branch_name }}
-  release-name-to-delete:
+  merged-release-name:
     description: "Extracted merged release name"
     value: ${{ steps.extract_release.outputs.release_name }}
 
@@ -13,15 +13,12 @@ runs:
   using: "composite"
   steps:
 
-    - name: Get deleted/merged/closed branch name
+    - name: Get branch name for the merged/closed PR
       id: get_pr_branch
       shell: bash
       run: |
-        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-          echo "BRANCH_NAME=${{ github.event.pull_request.head.ref }}" >> $GITHUB_OUTPUT
-        elif [[ "${{ github.event_name }}" == "delete" ]]; then
-          echo "BRANCH_NAME=${{ github.event.ref }}" >> $GITHUB_OUTPUT
-        fi
+        echo "Merged/closed branch was: ${{ github.event.pull_request.head.ref }}"
+        echo "BRANCH_NAME=${{ github.event.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
     - name: Extract release name from branch name
       id: extract_release

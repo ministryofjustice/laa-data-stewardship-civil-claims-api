@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.1
+  version: 1.0.0
   title: Claims API
 paths:
   /api/v1/claims:
@@ -148,7 +148,6 @@ components:
         - id
         - name
         - description
-        - claim_type
       properties:
         id:
           type: integer
@@ -157,13 +156,10 @@ components:
           type: string
         description:
           type: string
-        claim_type:
-          type: madeUpType
     ClaimRequestBody:
       required:
         - name
         - description
-        - claim_type
       properties:
         name:
           type: string
