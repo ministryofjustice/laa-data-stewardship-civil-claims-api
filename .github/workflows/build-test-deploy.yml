@@ -129,7 +129,7 @@ jobs:
         uses: snyk/actions/docker@master
         with:
           image: laa-data-stewardship-civil-claims-api/claims-data:scan
-          args: -t --file=./claims-data/Dockerfile --severity-threshold=high
+          args: -d --file=./claims-data/Dockerfile --severity-threshold=high
 
   build-push-docker:
     name: build and push docker image
