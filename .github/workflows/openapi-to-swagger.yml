@@ -58,9 +58,6 @@ jobs:
           name: swagger-ui-jar
           path: claims-data/swagger-ui-app/build/libs/
 
-      - name: Check downloaded JAR path
-        run: ls -l claims-data/swagger-ui-app/build/libs
-
         # ---------- AWS auth (OIDC) ----------
       - name: Configure AWS creds
         uses: aws-actions/configure-aws-credentials@v4.2.1
