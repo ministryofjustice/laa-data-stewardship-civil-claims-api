@@ -129,7 +129,7 @@ jobs:
         uses: snyk/actions/docker@master
         with:
           image: laa-data-stewardship-civil-claims-api/claims-data:scan
-          args: --docker --log-level=trace --file=./claims-data/Dockerfile --severity-threshold=high
+          args: --docker --log-level=trace --severity-threshold=high
 
   build-push-docker:
     name: build and push docker image
