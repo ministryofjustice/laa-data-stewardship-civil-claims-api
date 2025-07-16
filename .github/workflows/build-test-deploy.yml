@@ -114,8 +114,16 @@ jobs:
       - name: Build app jar with gradle
         run: ./gradlew build
 
+      - name: Verify Dockerfile context
+        run: |
+          echo "Working directory: $PWD"
+          ls -l ./claims-data
+
       - name: Build a Docker image for claims-data
         run: docker build -t laa-data-stewardship-civil-claims-api/claims-data:scan ./claims-data
+
+      - name: Debug Docker images
+        run: docker images
 
       - name: Run Snyk to check claims-data Docker image for vulnerabilities
         uses: snyk/actions/docker@master
