@@ -3,7 +3,7 @@ name: Preview OpenAPI Spec
 on:
   push:
     branches:
-      - 'openapi/**'
+      - 'hotfix/**'
 
 jobs:
   generate-swagger-ui:
@@ -27,8 +27,8 @@ jobs:
 
       - name: Copy Swagger UI to static folder
         run: |
-          mkdir -p claims-data/api/src/main/resources/static
-          cp -r claims-data/api/build/generated/swagger-ui/* claims-data/api/src/main/resources/static/
+          mkdir -p claims-data/swagger-ui-app/src/main/resources/static
+          cp -r claims-data/api/build/generated/swagger-ui/* claims-data/swagger-ui-app/src/main/resources/static/
 
       - name: Build Swagger UI JAR
         run: ./gradlew  -PswaggerOnly=true :claims-data:api:bootJar
