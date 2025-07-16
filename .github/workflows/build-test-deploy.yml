@@ -120,7 +120,7 @@ jobs:
           ls -l ./claims-data
 
       - name: Build a Docker image for claims-data
-        run: docker build -t laa-data-stewardship-civil-claims-api/claims-data:scan ./claims-data
+        run: docker build -t claims-data-scan ./claims-data
 
       - name: Debug Docker images
         run: docker images
@@ -128,7 +128,7 @@ jobs:
       - name: Run Snyk to check claims-data Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         with:
-          image: laa-data-stewardship-civil-claims-api/claims-data:scan
+          image: claims-data-scan
           args: --docker -d --log-level=trace --severity-threshold=high
 
   build-push-docker:
