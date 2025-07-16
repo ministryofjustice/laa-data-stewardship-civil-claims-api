@@ -31,7 +31,7 @@ jobs:
           cp -r claims-data/api/build/generated/swagger-ui/* claims-data/swagger-ui-app/src/main/resources/static/
 
       - name: Build Swagger UI JAR
-        run: ./gradlew  -PswaggerOnly=true :claims-data:api:bootJar
+        run: ./gradlew  -PswaggerOnly=true :claims-data:swagger-ui-app:bootJar
 
       - name: Upload Swagger UI JAR
         uses: actions/upload-artifact@v4
