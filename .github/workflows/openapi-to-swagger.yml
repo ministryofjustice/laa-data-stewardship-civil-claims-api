@@ -3,7 +3,7 @@ name: Preview OpenAPI Spec
 on:
   push:
     branches:
-      - 'hotfix/**'
+      - 'openapi/**'
 
 jobs:
   generate-swagger-ui:
