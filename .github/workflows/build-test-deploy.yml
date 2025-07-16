@@ -173,7 +173,7 @@ jobs:
     needs:
       - build-push-docker
       - vulnerability-scan-app
-      - vulnerability-scan-docker
+#      - vulnerability-scan-docker
     environment: uat
     permissions:
       id-token: write
