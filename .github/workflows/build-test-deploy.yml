@@ -114,11 +114,6 @@ jobs:
       - name: Build app jar with gradle
         run: ./gradlew build
 
-      - name: Verify Dockerfile context
-        run: |
-          echo "Working directory: $PWD"
-          ls -l ./claims-data
-
       - name: Build local Docker image
         run: |
           docker build -t claims-data-scan ./claims-data
@@ -174,7 +169,7 @@ jobs:
     needs:
       - build-push-docker
       - vulnerability-scan-app
-#      - vulnerability-scan-docker
+      - vulnerability-scan-docker
     environment: uat
     permissions:
       id-token: write

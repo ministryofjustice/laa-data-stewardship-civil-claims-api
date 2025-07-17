@@ -14,6 +14,9 @@ Includes the following subprojects:
 
 - `claims-data/api` - OpenAPI specification used for generating API stub interfaces and documentation.
 - `claims-data/service` - REST API service with CRUD operations interfacing a JPA repository.
+- `claims-data/swagger-ui-app` - Stub REST API application which allows swagger-ui docs to be exposed
+                                - this allows us to upgrade open api spec ahead of the java code 
+                                - (openapi spec changes have to be made on a branch named openapi/*)
 
 ## Build And Run Application
 
