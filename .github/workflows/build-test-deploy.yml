@@ -114,14 +114,18 @@ jobs:
       - name: Build app jar with gradle
         run: ./gradlew build
 
-      - name: Build a Docker image for claims-data
-        run: docker build -t laa-data-stewardship-civil-claims-api/claims-data:scan ./claims-data
+      - name: Build local Docker image
+        run: |
+          docker build -t claims-data-scan ./claims-data
+          docker save claims-data-scan -o image.tar
 
-      - name: Run Snyk to check claims-data Docker image for vulnerabilities
+      - name: Run Snyk to scan Docker image from tarball
         uses: snyk/actions/docker@master
         with:
-          image: laa-data-stewardship-civil-claims-api/claims-data:scan
-          args: --file=./claims-data/Dockerfile --severity-threshold=high
+          image: image.tar
+          args: --docker --severity-threshold=high
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   build-push-docker:
     name: build and push docker image
